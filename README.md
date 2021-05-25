@@ -8,25 +8,22 @@
 [![NPM](https://nodei.co/npm/vue-quill-editor.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/vue-quill-editor/)
 [![NPM](https://nodei.co/npm-dl/vue-quill-editor.png?months=9&height=3)](https://nodei.co/npm/vue-quill-editor/)
 
-
 # Vue-Quill-Editor
 
 [Quill](https://github.com/quilljs/quill) editor component for Vue.
 
 基于 [Quill](https://github.com/quilljs/quill)、适用于 Vue 的富文本编辑器，支持服务端渲染和单页应用。
 
-
 ### Example
 
 - [Component example page](https://surmon-china.github.io/vue-quill-editor/)
 - [CDN example page](https://jsfiddle.net/surmon/fpojgkmy/)
 
-
 ### Install
 
 **NPM**
 
-``` bash
+```bash
 npm install vue-quill-editor --save
 
 # or
@@ -35,15 +32,18 @@ yarn add vue-quill-editor
 
 **CDN**
 
-``` html
-<link rel="stylesheet" href="path/to/quill.core.css"/>
-<link rel="stylesheet" href="path/to/quill.snow.css"/>
-<link rel="stylesheet" href="path/to/quill.bubble.css"/>
+```html
+<link rel="stylesheet" href="path/to/quill.core.css" />
+<link rel="stylesheet" href="path/to/quill.snow.css" />
+<link rel="stylesheet" href="path/to/quill.bubble.css" />
 <script type="text/javascript" src="path/to/quill.js"></script>
 <script type="text/javascript" src="path/to/vue.min.js"></script>
-<script type="text/javascript" src="path/to/dist/vue-quill-editor.js"></script>
+<script
+  type="text/javascript"
+  src="path/to/dist/rey-vue-quill-editor.js"
+></script>
 <script type="text/javascript">
-  Vue.use(window.VueQuillEditor)
+  Vue.use(window.VueQuillEditor);
 </script>
 ```
 
@@ -51,31 +51,31 @@ yarn add vue-quill-editor
 
 **Mount with global**
 
-``` javascript
-import Vue from 'vue'
-import VueQuillEditor from 'vue-quill-editor'
+```javascript
+import Vue from 'vue';
+import VueQuillEditor from 'rey-vue-quill-editor';
 
-import 'quill/dist/quill.core.css' // import styles
-import 'quill/dist/quill.snow.css' // for snow theme
-import 'quill/dist/quill.bubble.css' // for bubble theme
+import 'quill/dist/quill.core.css'; // import styles
+import 'quill/dist/quill.snow.css'; // for snow theme
+import 'quill/dist/quill.bubble.css'; // for bubble theme
 
-Vue.use(VueQuillEditor, /* { default global options } */)
+Vue.use(VueQuillEditor /* { default global options } */);
 ```
 
 **Mount with local component**
 
 ```javascript
-import 'quill/dist/quill.core.css'
-import 'quill/dist/quill.snow.css'
-import 'quill/dist/quill.bubble.css'
+import 'quill/dist/quill.core.css';
+import 'quill/dist/quill.snow.css';
+import 'quill/dist/quill.bubble.css';
 
-import { quillEditor } from 'vue-quill-editor'
+import { quillEditor } from 'rey-vue-quill-editor';
 
 export default {
   components: {
-    quillEditor
-  }
-}
+    quillEditor,
+  },
+};
 ```
 
 **Mount with SSR**
@@ -85,16 +85,16 @@ View [Nuxt.js example code](https://github.com/surmon-china/surmon-china.github.
 ### Register Quill module
 
 ```javascript
-import Quill from 'quill'
-import yourQuillModule from '../yourModulePath/yourQuillModule.js'
-Quill.register('modules/yourQuillModule', yourQuillModule)
+import Quill from 'quill';
+import yourQuillModule from '../yourModulePath/yourQuillModule.js';
+Quill.register('modules/yourQuillModule', yourQuillModule);
 
 // Vue app...
 ```
 
 ### Component
 
-``` vue
+```vue
 <template>
   <!-- Two-way Data-Binding -->
   <quill-editor
@@ -115,68 +115,68 @@ Quill.register('modules/yourQuillModule', yourQuillModule)
 </template>
 
 <script>
-  // You can also register Quill modules in the component
-  import Quill from 'quill'
-  import someModule from '../yourModulePath/someQuillModule.js'
-  Quill.register('modules/someModule', someModule)
-  
-  export default {
-    data () {
-      return {
-        content: '<h2>I am Example</h2>',
-        editorOption: {
-          // Some Quill options...
-        }
-      }
-    },
-    methods: {
-      onEditorBlur(quill) {
-        console.log('editor blur!', quill)
+// You can also register Quill modules in the component
+import Quill from 'quill';
+import someModule from '../yourModulePath/someQuillModule.js';
+Quill.register('modules/someModule', someModule);
+
+export default {
+  data() {
+    return {
+      content: '<h2>I am Example</h2>',
+      editorOption: {
+        // Some Quill options...
       },
-      onEditorFocus(quill) {
-        console.log('editor focus!', quill)
-      },
-      onEditorReady(quill) {
-        console.log('editor ready!', quill)
-      },
-      onEditorChange({ quill, html, text }) {
-        console.log('editor change!', quill, html, text)
-        this.content = html
-      }
+    };
+  },
+  methods: {
+    onEditorBlur(quill) {
+      console.log('editor blur!', quill);
     },
-    computed: {
-      editor() {
-        return this.$refs.myQuillEditor.quill
-      }
+    onEditorFocus(quill) {
+      console.log('editor focus!', quill);
     },
-    mounted() {
-      console.log('this is current quill instance object', this.editor)
-    }
-  }
+    onEditorReady(quill) {
+      console.log('editor ready!', quill);
+    },
+    onEditorChange({ quill, html, text }) {
+      console.log('editor change!', quill, html, text);
+      this.content = html;
+    },
+  },
+  computed: {
+    editor() {
+      return this.$refs.myQuillEditor.quill;
+    },
+  },
+  mounted() {
+    console.log('this is current quill instance object', this.editor);
+  },
+};
 </script>
 ```
 
 ### Projects using vue-quill-editor
+
 - [Tamiat CMS](https://github.com/tamiat/tamiat/)
 - ...
 
-
 ### Issues
+
 - [Add attributes from toolbar options](https://github.com/quilljs/quill/issues/1084)
 - [Option to insert an image from a URL](https://github.com/quilljs/quill/issues/893)
 - [How vue-quill-editor combine with the syntax highlighter module of highlight.js](https://github.com/surmon-china/vue-quill-editor/issues/39)
 - [配合 element-ui 实现上传图片/视频到七牛 demo](https://github.com/surmon-china/vue-quill-editor/issues/102)
 - [How to fix “Can’t find variable: Quill”, “Quill is undefined”, “window.Quill is undefined” errors when trying to use Quill modules that use Webpack in Nuxt/SSR](https://github.com/surmon-china/vue-quill-editor/issues/171#issuecomment-370253411)
 
-
 ### Quill Modules
+
 - [quill-image-extend-module](https://github.com/NextBoy/quill-image-extend-module)
 - [quill-image-resize-module](https://github.com/kensnyder/quill-image-resize-module)
 - [quill-image-drop-module](https://github.com/kensnyder/quill-image-drop-module)
 - [quilljs-table](https://github.com/dost/quilljs-table)
 - [more modules...](https://github.com/search?o=desc&q=quill+module&s=stars&type=Repositories&utf8=%E2%9C%93)
 
-
 ### Quill
-[Quill API document](https://quilljs.com/docs/quickstart/)
 
+[Quill API document](https://quilljs.com/docs/quickstart/)

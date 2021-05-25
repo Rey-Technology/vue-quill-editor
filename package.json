@@ -1,51 +1,30 @@
 {
-  "name": "vue-quill-editor",
+  "name": "rey-vue-quill-editor",
   "description": "Quill editor component for Vue",
-  "version": "3.0.6",
-  "license": "MIT",
-  "private": false,
-  "author": {
-    "name": "Surmon",
-    "email": "surmon@foxmail.com",
-    "url": "https://surmon.me"
-  },
-  "bugs": {
-    "url": "https://github.com/surmon-china/vue-quill-editor/issues"
-  },
-  "homepage": "https://github.com/surmon-china/vue-quill-editor#readme",
-  "main": "dist/vue-quill-editor.js",
-  "unpkg": "dist/vue-quill-editor.js",
-  "jsnext:main": "dist/vue-quill-editor.js",
+  "version": "0.1.0",
+  "author": "Surmon (Original), Rey Technology AG",
+  "main": "dist/rey-vue-quill-editor.js",
+  "unpkg": "dist/rey-vue-quill-editor.js",
+  "jsnext:main": "dist/rey-vue-quill-editor.js",
   "files": [
     "dist",
     "src"
   ],
   "jspm": {
-    "main": "dist/vue-quill-editor.js",
+    "main": "dist/rey-vue-quill-editor.js",
     "registry": "npm",
     "format": "esm"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/surmon-china/vue-quill-editor.git"
-  },
-  "keywords": [
-    "vue-quill-editor",
-    "vue quill",
-    "vue text editor",
-    "vue rich text editor",
-    "vue web editor",
-    "vue editor"
-  ],
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config config/build.conf.js",
-    "unit": "cross-env BABEL_ENV=test NODE_ENV=testing karma start test/unit/karma.conf.js --watch",
-    "test": "cross-env BABEL_ENV=test NODE_ENV=testing karma start test/unit/karma.conf.js --single-run",
+    "build": "pnpx cross-env NODE_ENV=production webpack --config config/build.conf.js",
+    "unit": "pnpx cross-env BABEL_ENV=test NODE_ENV=testing karma start test/unit/karma.conf.js --watch",
+    "test": "pnpx cross-env BABEL_ENV=test NODE_ENV=testing karma start test/unit/karma.conf.js --single-run",
     "lint": "eslint --ext .js,.vue src test/unit/specs",
-    "finish": "npm run lint && npm test && npm run build",
-    "publish": "git push && git push --tags && npm publish"
+    "finish": "pnpm run lint && pnpm test && pnpm run build",
+    "publish": "git push && git push --tags && pnpm publish"
   },
   "dependencies": {
+    "lodash": "^4.17.15",
     "object-assign": "^4.1.1",
     "quill": "^1.3.7"
   },
@@ -97,7 +76,7 @@
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-sinon-chai": "^1.2.4",
     "karma-sourcemap-loader": "^0.3.7",
-    "karma-spec-reporter": "0.0.26",
+    "karma-spec-reporter": "^0.0.26",
     "karma-webpack": "^2.0.2",
     "lolex": "^1.5.2",
     "mocha": "^3.2.0",
